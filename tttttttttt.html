@@ -1,0 +1,2754 @@
+/* =============================================
+   WealthBoost Invest - Complete Stylesheet
+   ============================================= */
+
+/* --- CSS Variables / Root --- */
+:root {
+    --primary: #6C3DFF;
+    --primary-dark: #5228CC;
+    --primary-light: #8B6BFF;
+    --secondary: #00C9A7;
+    --secondary-dark: #00A88B;
+    --accent: #FF6B35;
+    --dark: #0F0B1E;
+    --dark-card: #1A1530;
+    --dark-hover: #252040;
+    --dark-border: #2D2850;
+    --text-primary: #FFFFFF;
+    --text-secondary: #B8B0D4;
+    --text-muted: #7A7299;
+    --success: #00C9A7;
+    --warning: #FFB800;
+    --danger: #FF4757;
+    --info: #3D8BFF;
+    --gradient-primary: linear-gradient(135deg, #6C3DFF 0%, #00C9A7 100%);
+    --gradient-card: linear-gradient(135deg, rgba(108, 61, 255, 0.1) 0%, rgba(0, 201, 167, 0.05) 100%);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.5);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 28px;
+    --font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
+    --transition: all 0.3s ease;
+}
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--dark);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+ul { list-style: none; }
+
+img { max-width: 100%; }
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--dark); }
+::-webkit-scrollbar-thumb { background: var(--dark-border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* =============================================
+   LANDING PAGE (index.php)
+   ============================================= */
+
+.landing-wrapper {
+    overflow-x: hidden;
+}
+
+/* --- Navigation --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    background: rgba(15, 11, 30, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--dark-border);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+}
+
+.navbar .logo span {
+    -webkit-text-fill-color: var(--text-primary);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: var(--text-primary);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+    transition: var(--transition);
+}
+
+.nav-links a:hover::after { width: 100%; }
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: var(--font-family);
+}
+
+.btn-primary {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: 0 4px 15px rgba(108, 61, 255, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(108, 61, 255, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--dark-border);
+}
+
+.btn-secondary:hover {
+    border-color: var(--primary);
+    background: rgba(108, 61, 255, 0.1);
+}
+
+.btn-success {
+    background: var(--secondary);
+    color: white;
+}
+
+.btn-success:hover {
+    background: var(--secondary-dark);
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: var(--danger);
+    color: white;
+}
+
+.btn-sm {
+    padding: 8px 18px;
+    font-size: 0.85rem;
+}
+
+.btn-lg {
+    padding: 16px 36px;
+    font-size: 1.1rem;
+}
+
+/* --- Hero Section --- */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 5% 80px;
+    position: relative;
+    background: 
+        radial-gradient(ellipse at 20% 50%, rgba(108, 61, 255, 0.15) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(0, 201, 167, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(255, 107, 53, 0.08) 0%, transparent 50%);
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    z-index: 2;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(108, 61, 255, 0.15);
+    border: 1px solid rgba(108, 61, 255, 0.3);
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    color: var(--primary-light);
+    margin-bottom: 30px;
+}
+
+.hero-badge .dot {
+    width: 8px;
+    height: 8px;
+    background: var(--success);
+    border-radius: 50%;
+    animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+}
+
+.hero h1 .highlight {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hero-stats {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid var(--dark-border);
+}
+
+.hero-stat-item {
+    text-align: center;
+}
+
+.hero-stat-item .number {
+    font-size: 2rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-stat-item .label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* --- Features / How It Works --- */
+.section {
+    padding: 100px 5%;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 60px;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.section-header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    border-radius: var(--radius-lg);
+    padding: 40px 30px;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-lg);
+}
+
+.feature-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: var(--gradient-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    font-size: 2rem;
+}
+
+.feature-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+}
+
+.feature-card p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* --- Plans Section --- */
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.plan-card {
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    border-radius: var(--radius-lg);
+    padding: 40px 30px;
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.plan-card.featured {
+    border-color: var(--primary);
+    transform: scale(1.05);
+}
+
+.plan-card.featured::before {
+    content: 'Most Popular';
+    position: absolute;
+    top: 20px;
+    right: -30px;
+    background: var(--gradient-primary);
+    padding: 6px 40px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    transform: rotate(45deg);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.plan-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-lg);
+}
+
+.plan-card.featured:hover {
+    transform: scale(1.05) translateY(-8px);
+}
+
+.plan-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.plan-range {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.plan-roi {
+    font-size: 3.5rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 4px;
+}
+
+.plan-roi-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+}
+
+.plan-duration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+}
+
+.plan-divider {
+    height: 1px;
+    background: var(--dark-border);
+    margin: 20px 0;
+}
+
+.plan-features {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.plan-features li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.plan-features li::before {
+    content: '✓';
+    color: var(--secondary);
+    font-weight: 700;
+}
+
+/* --- Footer --- */
+.footer {
+    background: var(--dark-card);
+    border-top: 1px solid var(--dark-border);
+    padding: 40px 5%;
+    text-align: center;
+}
+
+.footer p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* =============================================
+   AUTH PAGES (login.php, register.php)
+   ============================================= */
+
+.auth-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: 
+        radial-gradient(ellipse at 30% 20%, rgba(108, 61, 255, 0.15) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 80%, rgba(0, 201, 167, 0.1) 0%, transparent 50%);
+}
+
+.auth-card {
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    border-radius: var(--radius-xl);
+    padding: 50px 40px;
+    width: 100%;
+    max-width: 460px;
+    box-shadow: var(--shadow-lg);
+}
+
+.auth-card .logo {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.auth-card .subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 35px;
+    font-size: 0.95rem;
+}
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    background: var(--dark);
+    border: 1px solid var(--dark-border);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-family: var(--font-family);
+    transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(108, 61, 255, 0.2);
+}
+
+.form-group input::placeholder {
+    color: var(--text-muted);
+}
+
+.form-group .input-error {
+    border-color: var(--danger);
+}
+
+.form-footer {
+    text-align: center;
+    margin-top: 24px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.form-footer a {
+    color: var(--primary-light);
+    font-weight: 600;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+.alert {
+    padding: 14px 18px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 24px;
+    font-size: 0.9rem;
+}
+
+.alert-success {
+    background: rgba(0, 201, 167, 0.15);
+    border: 1px solid rgba(0, 201, 167, 0.3);
+    color: var(--success);
+}
+
+.alert-danger {
+    background: rgba(255, 71, 87, 0.15);
+    border: 1px solid rgba(255, 71, 87, 0.3);
+    color: var(--danger);
+}
+
+.alert-info {
+    background: rgba(61, 139, 255, 0.15);
+    border: 1px solid rgba(61, 139, 255, 0.3);
+    color: var(--info);
+}
+
+/* =============================================
+   DASHBOARD LAYOUT
+   ============================================= */
+
+.dashboard-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+    width: 260px;
+    background: var(--dark-card);
+    border-right: 1px solid var(--dark-border);
+    padding: 24px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+    overflow-y: auto;
+    transition: var(--transition);
+}
+
+.sidebar-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 35px;
+    display: block;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sidebar-nav a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.sidebar-nav a:hover {
+    background: var(--dark-hover);
+    color: var(--text-primary);
+}
+
+.sidebar-nav a.active {
+    background: rgba(108, 61, 255, 0.15);
+    color: var(--primary-light);
+    border-left: 3px solid var(--primary);
+}
+
+.sidebar-nav a .icon {
+    font-size: 1.2rem;
+    width: 24px;
+    text-align: center;
+}
+
+.sidebar-footer {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
+}
+
+.sidebar-footer .user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--dark);
+    border-radius: var(--radius-sm);
+}
+
+.sidebar-footer .user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.sidebar-footer .user-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.sidebar-footer .user-email {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* --- Main Content --- */
+.main-content {
+    margin-left: 260px;
+    flex: 1;
+    padding: 30px 40px;
+    min-height: 100vh;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.page-header h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.page-header p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* --- Stats Cards --- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.stat-card .stat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.stat-card .stat-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.stat-card .stat-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.stat-card .stat-icon.purple { background: rgba(108, 61, 255, 0.15); color: var(--primary-light); }
+.stat-card .stat-icon.green { background: rgba(0, 201, 167, 0.15); color: var(--secondary); }
+.stat-card .stat-icon.orange { background: rgba(255, 107, 53, 0.15); color: var(--accent); }
+.stat-card .stat-icon.blue { background: rgba(61, 139, 255, 0.15); color: var(--info); }
+.stat-card .stat-icon.red { background: rgba(255, 71, 87, 0.15); color: var(--danger); }
+
+.stat-card .stat-value {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 4px;
+}
+
+.stat-card .stat-change {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* --- Tables --- */
+.table-container {
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.table-container .table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--dark-border);
+}
+
+.table-container .table-header h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th {
+    text-align: left;
+    padding: 16px 24px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    border-bottom: 1px solid var(--dark-border);
+}
+
+table td {
+    padding: 16px 24px;
+    font-size: 0.9rem;
+    border-bottom: 1px solid rgba(45, 40, 80, 0.5);
+    color: var(--text-secondary);
+}
+
+table tr:last-child td {
+    border-bottom: none;
+}
+
+table tr:hover td {
+    background: var(--dark-hover);
+}
+
+/* --- Status Badges --- */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.badge-success {
+    background: rgba(0, 201, 167, 0.15);
+    color: var(--success);
+}
+
+.badge-warning {
+    background: rgba(255, 184, 0, 0.15);
+    color: var(--warning);
+}
+
+.badge-danger {
+    background: rgba(255, 71, 87, 0.15);
+    color: var(--danger);
+}
+
+.badge-info {
+    background: rgba(61, 139, 255, 0.15);
+    color: var(--info);
+}
+
+.badge-primary {
+    background: rgba(108, 61, 255, 0.15);
+    color: var(--primary-light);
+}
+
+/* --- Investment Cards (Invest Page) --- */
+.invest-plans {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.invest-card {
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    border-radius: var(--radius-lg);
+    padding: 35px 30px;
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.invest-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.invest-card.popular {
+    border-color: var(--primary);
+}
+
+.invest-card.popular::after {
+    content: 'Popular';
+    position: absolute;
+    top: 15px;
+    right: -28px;
+    background: var(--gradient-primary);
+    padding: 4px 36px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    transform: rotate(45deg);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- Withdraw Page --- */
+.withdraw-card {
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.withdraw-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--dark-border);
+    color: var(--text-secondary);
+}
+
+.withdraw-info .value {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* --- Profile Page --- */
+.profile-card {
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 35px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--dark-border);
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.profile-details h3 {
+    font-size: 1.3rem;
+    margin-bottom: 4px;
+}
+
+.profile-details p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        width: 280px;
+    }
+    
+    .sidebar.open {
+        transform: translateX(0);
+    }
+    
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+    
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .section {
+        padding: 60px 5%;
+    }
+    
+    .plans-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .plan-card.featured {
+        transform: none;
+    }
+    
+    .plan-card.featured:hover {
+        transform: translateY(-8px);
+    }
+    
+    .auth-card {
+        padding: 30px 24px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+    
+    .stat-card .stat-value {
+        font-size: 1.3rem;
+    }
+    
+    .table-container {
+        overflow-x: auto;
+    }
+    
+    .invest-plans {
+        grid-template-columns: 1fr;
+    }
+    
+    .withdraw-card,
+    .profile-card {
+        padding: 24px;
+    }
+    
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .mobile-toggle {
+        display: flex !important;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-toggle {
+        display: none;
+    }
+}
+
+/* --- Mobile Menu Toggle --- */
+.mobile-toggle {
+    width: 40px;
+    height: 40px;
+    background: var(--dark-card);
+    border: 1px solid var(--dark-border);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Overlay --- */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 99;
+}
+
+.sidebar-overlay.active {
+    display: block;
+}
+// Mobile sidebar toggle
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtn = document.querySelector('.mobile-toggle');
+    const sidebar = document.querySelector('.sidebar');
+    const overlay = document.querySelector('.sidebar-overlay');
+    
+    if (toggleBtn && sidebar) {
+        toggleBtn.addEventListener('click', function() {
+            sidebar.classList.toggle('open');
+            if (overlay) overlay.classList.toggle('active');
+        });
+        
+        if (overlay) {
+            overlay.addEventListener('click', function() {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('active');
+            });
+        }
+    }
+    
+    // Auto-dismiss alerts after 5 seconds
+    const alerts = document.querySelectorAll('.alert');
+    alerts.forEach(alert => {
+        setTimeout(() => {
+            alert.style.opacity = '0';
+            alert.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => alert.remove(), 500);
+        }, 5000);
+    });
+    
+    // Confirm before cancel actions
+    document.querySelectorAll('[data-confirm]').forEach(el => {
+        el.addEventListener('click', function(e) {
+            if (!confirm(this.dataset.confirm || 'Are you sure?')) {
+                e.preventDefault();
+            }
+        });
+    });
+    
+    // Amount validation for invest forms
+    const amountInputs = document.querySelectorAll('input[name="amount"]');
+    amountInputs.forEach(input => {
+        input.addEventListener('input', function() {
+            const min = parseFloat(this.getAttribute('min') || 0);
+            const max = parseFloat(this.getAttribute('max') || Infinity);
+            const val = parseFloat(this.value) || 0;
+            
+            if (val < min) {
+                this.setCustomValidity(`Minimum amount is ₦${min.toLocaleString()}`);
+            } else if (val > max) {
+                this.setCustomValidity(`Maximum amount is ₦${max.toLocaleString()}`);
+            } else {
+                this.setCustomValidity('');
+            }
+        });
+    });
+});
+<?php
+require_once 'config/database.php';
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><?= SITE_NAME ?> - Smart Investment Platform</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="landing-wrapper">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.php" class="logo">Wealth<span>Boost</span></a>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#plans">Plans</a>
+            <a href="#how">How It Works</a>
+            <?php if (isLoggedIn()): ?>
+                <a href="dashboard.php" class="btn btn-primary">Dashboard</a>
+            <?php else: ?>
+                <a href="login.php" class="btn btn-secondary">Log In</a>
+                <a href="register.php" class="btn btn-primary">Get Started</a>
+            <?php endif; ?>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="dot"></span>
+                Trusted by 10,000+ Investors
+            </div>
+            <h1>
+                Grow Your Wealth<br>
+                <span class="highlight">5x Returns in 5 Days</span>
+            </h1>
+            <p>
+                Start investing from as little as <strong>₦3,000</strong> and watch your money grow. 
+                Secure, transparent, and reliable investment platform with guaranteed returns.
+            </p>
+            <div class="hero-actions">
+                <?php if (isLoggedIn()): ?>
+                    <a href="dashboard.php" class="btn btn-primary btn-lg">Go to Dashboard</a>
+                <?php else: ?>
+                    <a href="register.php" class="btn btn-primary btn-lg">Start Investing Now</a>
+                    <a href="#plans" class="btn btn-secondary btn-lg">View Plans</a>
+                <?php endif; ?>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat-item">
+                    <div class="number">₦50M+</div>
+                    <div class="label">Total Paid Out</div>
+                </div>
+                <div class="hero-stat-item">
+                    <div class="number">10,000+</div>
+                    <div class="label">Active Investors</div>
+                </div>
+                <div class="hero-stat-item">
+                    <div class="number">5 Days</div>
+                    <div class="label">Average ROI Cycle</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section" id="how">
+        <div class="section-header">
+            <h2>How It Works</h2>
+            <p>Three simple steps to start earning with WealthBoost Invest</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3>Create Account</h3>
+                <p>Sign up for free in under 2 minutes. Verify your email and set up your profile.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💸</div>
+                <h3>Choose a Plan</h3>
+                <p>Select any investment plan starting from ₦3,000. Deposit funds securely.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3>Earn 5x Returns</h3>
+                <p>In just 5 days, your investment grows 5x. Withdraw your profits anytime!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Plans -->
+    <section class="section" id="plans" style="background: var(--dark-card);">
+        <div class="section-header">
+            <h2>Our Investment Plans</h2>
+            <p>All plans deliver <strong>5x returns in just 5 days</strong>. Choose what suits you best.</p>
+        </div>
+        <div class="plans-grid">
+            <?php
+            $stmt = $pdo->query("SELECT * FROM investment_plans WHERE is_active = 1 ORDER BY min_amount ASC");
+            $plans = $stmt->fetchAll();
+            $count = 0;
+            foreach ($plans as $plan):
+                $count++;
+                $featured = ($count == 2) ? 'featured' : '';
+            ?>
+            <div class="plan-card <?= $featured ?>">
+                <h3 class="plan-name"><?= htmlspecialchars($plan['plan_name']) ?></h3>
+                <p class="plan-range"><?= formatMoney($plan['min_amount']) ?> – <?= formatMoney($plan['max_amount']) ?></p>
+                <div class="plan-roi"><?= $plan['roi_multiplier'] ?>x</div>
+                <div class="plan-roi-label">Return on Investment</div>
+                <div class="plan-duration">⏱ <?= $plan['duration_days'] ?> Days Duration</div>
+                <div class="plan-divider"></div>
+                <ul class="plan-features">
+                    <li>Guaranteed <?= $plan['roi_multiplier'] ?>x returns</li>
+                    <li>Payout in <?= $plan['duration_days'] ?> days</li>
+                    <li>100% capital secured</li>
+                    <li>24/7 customer support</li>
+                </ul>
+                <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 0.9rem;">
+                    <?= htmlspecialchars($plan['description']) ?>
+                </p>
+                <?php if (isLoggedIn()): ?>
+                    <a href="invest.php" class="btn btn-primary" style="width: 100%;">Invest Now</a>
+                <?php else: ?>
+                    <a href="register.php" class="btn btn-primary" style="width: 100%;">Get Started</a>
+                <?php endif; ?>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <div class="section-header">
+            <h2>Why Choose WealthBoost?</h2>
+            <p>We provide the best investment experience with security and transparency</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Secure Platform</h3>
+                <p>Industry-standard encryption and security protocols to protect your investments.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Fast Withdrawals</h3>
+                <p>Request withdrawals anytime. Funds are processed within 24 hours.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Real-Time Tracking</h3>
+                <p>Monitor your investments live with our advanced dashboard and analytics.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Guaranteed Returns</h3>
+                <p>Your investment grows 5x in just 5 days. No hidden fees or surprises.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; <?= date('Y') ?> <?= SITE_NAME ?>. All rights reserved. | Smart Investment Platform</p>
+    </footer>
+</div>
+</body>
+</html>
+<?php
+require_once 'config/database.php';
+
+if (isLoggedIn()) {
+    redirect('dashboard.php');
+}
+
+$error = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = sanitize($_POST['email'] ?? '');
+    $password = $_POST['password'] ?? '';
+    
+    if (empty($email) || empty($password)) {
+        $error = 'Please fill in all fields.';
+    } else {
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ? OR username = ?");
+        $stmt->execute([$email, $email]);
+        $user = $stmt->fetch();
+        
+        if ($user && password_verify($password, $user['password'])) {
+            if ($user['status'] === 'suspended') {
+                $error = 'Your account has been suspended. Contact support.';
+            } elseif ($user['status'] === 'pending') {
+                $error = 'Your account is pending approval.';
+            } else {
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['username'] = $user['username'];
+                redirect('dashboard.php');
+            }
+        } else {
+            $error = 'Invalid email/username or password.';
+        }
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - <?= SITE_NAME ?></title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <a href="index.php" class="logo"><?= SITE_NAME ?></a>
+        <p class="subtitle">Welcome back! Log in to your account.</p>
+
+        <?php if ($error): ?>
+            <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
+        <?php endif; ?>
+
+        <form method="POST" action="">
+            <div class="form-group">
+                <label for="email">Email or Username</label>
+                <input type="text" id="email" name="email" placeholder="Enter your email or username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Log In</button>
+        </form>
+
+        <div class="form-footer">
+            Don't have an account? <a href="register.php">Create one</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<?php
+require_once 'config/database.php';
+
+if (isLoggedIn()) {
+    redirect('dashboard.php');
+}
+
+$error = '';
+$success = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = sanitize($_POST['username'] ?? '');
+    $email = sanitize($_POST['email'] ?? '');
+    $full_name = sanitize($_POST['full_name'] ?? '');
+    $phone = sanitize($_POST['phone'] ?? '');
+    $password = $_POST['password'] ?? '';
+    $confirm_password = $_POST['confirm_password'] ?? '';
+    
+    // Validation
+    if (empty($username) || empty($email) || empty($full_name) || empty($password)) {
+        $error = 'Please fill in all required fields.';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error = 'Please enter a valid email address.';
+    } elseif (strlen($password) < 6) {
+        $error = 'Password must be at least 6 characters.';
+    } elseif ($password !== $confirm_password) {
+        $error = 'Passwords do not match.';
+    } elseif (!preg_match('/^[a-zA-Z0-9_]{3,50}$/', $username)) {
+        $error = 'Username can only contain letters, numbers, and underscores.';
+    } else {
+        // Check duplicates
+        $stmt = $pdo->prepare("SELECT id FROM users WHERE email = ? OR username = ?");
+        $stmt->execute([$email, $username]);
+        if ($stmt->fetch()) {
+            $error = 'Email or username already registered.';
+        } else {
+            $hashed = password_hash($password, PASSWORD_DEFAULT);
+            $stmt = $pdo->prepare("
+                INSERT INTO users (username
+               INSERT INTO users (username, email, password, full_name, phone, status)
+                VALUES (?, ?, ?, ?, ?, 'active')
+            ");
+            
+            if ($stmt->execute([$username, $email, $hashed, $full_name, $phone])) {
+                $userId = $pdo->lastInsertId();
+                
+                // Log the registration
+                $stmt = $pdo->prepare("INSERT INTO transactions (user_id, type, amount, description, status) VALUES (?, 'deposit', 0, 'Account created', 'completed')");
+                $stmt->execute([$userId]);
+                
+                $success = 'Account created successfully! You can now log in.';
+            } else {
+                $error = 'Registration failed. Please try again.';
+            }
+        }
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - <?= SITE_NAME ?></title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <a href="index.php" class="logo"><?= SITE_NAME ?></a>
+        <p class="subtitle">Create your account and start investing today.</p>
+
+        <?php if ($error): ?>
+            <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
+        <?php elseif ($success): ?>
+            <div class="alert alert-success"><?= htmlspecialchars($success) ?></div>
+        <?php endif; ?>
+
+        <form method="POST" action="">
+            <div class="form-group">
+                <label for="full_name">Full Name *</label>
+                <input type="text" id="full_name" name="full_name" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Username *</label>
+                <input type="text" id="username" name="username" placeholder="Choose a username" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="+234 XXX XXX XXXX">
+            </div>
+            <div class="form-group">
+                <label for="password">Password *</label>
+                <input type="password" id="password" name="password" placeholder="At least 6 characters" minlength="6" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm_password">Confirm Password *</label>
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm your password" required>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
+        </form>
+
+        <div class="form-footer">
+            Already have an account? <a href="login.php">Log in</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<?php
+require_once 'config/database.php';
+
+if (!isLoggedIn()) {
+    redirect('login.php');
+}
+
+$user_id = $_SESSION['user_id'];
+
+// Get user data
+$stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
+$stmt->execute([$user_id]);
+$user = $stmt->fetch();
+
+if (!$user) {
+    session_destroy();
+    redirect('login.php');
+}
+
+// Get active investments
+$activeInvestments = getActiveInvestments($user_id);
+$completedInvestments = getCompletedInvestments($user_id);
+
+// Get recent transactions
+$stmt = $pdo->prepare("SELECT * FROM transactions WHERE user_id = ? ORDER BY created_at DESC LIMIT 5");
+$stmt->execute([$user_id]);
+$recentTransactions = $stmt->fetchAll();
+
+// Auto-complete investments that have ended
+$stmt = $pdo->prepare("
+    SELECT i.*, u.account_balance, u.id as uid 
+    FROM investments i 
+    JOIN users u ON u.id = i.user_id 
+    WHERE i.user_id = ? AND i.status = 'active' AND i.end_date <= NOW()
+");
+$stmt->execute([$user_id]);
+$completedInvestmentsToProcess = $stmt->fetchAll();
+
+foreach ($completedInvestmentsToProcess as $inv) {
+    $pdo->beginTransaction();
+    try {
+        // Update investment status
+        $stmt = $pdo->prepare("UPDATE investments SET status = 'completed', completion_date = NOW() WHERE id = ?");
+        $stmt->execute([$inv['id']]);
+        
+        // Add return to balance
+        $stmt = $pdo->prepare("UPDATE users SET account_balance = account_balance + ?, total_earned = total_earned + ? WHERE id = ?");
+        $stmt->execute([$inv['expected_return'], $inv['expected_return'], $user_id]);
+        
+        // Log transaction
+        $stmt = $pdo->prepare("INSERT INTO transactions (user_id, type, amount, description, status) VALUES (?, 'return', ?, 'Investment return (#{$inv['id']}) - ' . $inv['roi_multiplier'] . 'x', 'completed')");
+        // Simplified:
+        $desc = "Investment return - Plan completed: 5x on ₦" . number_format($inv['amount'], 2);
+        $stmt = $pdo->prepare("INSERT INTO transactions (user_id, type, amount, description, status) VALUES (?, 'return', ?, ?, 'completed')");
+        $stmt->execute([$user_id, $inv['expected_return'], $desc]);
+        
+        $pdo->commit();
+    } catch (Exception $e) {
+        $pdo->rollBack();
+    }
+}
+
+// Refresh user data
+$stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
+$stmt->execute([$user_id]);
+$user = $stmt->fetch();
+
+// Refresh active investments count
+$activeInvestments = getActiveInvestments($user_id);
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - <?= SITE_NAME ?></title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="dashboard-wrapper">
+    <!-- Sidebar -->
+    <div class="sidebar-overlay"></div>
+    <aside class="sidebar">
+        <a href="index.php" class="sidebar-logo">WealthBoost</a>
+        <nav class="sidebar-nav">
+            <a href="dashboard.php" class="active">
+                <span class="icon">📊</span> Dashboard
+            </a>
+            <a href="invest.php">
+                <span class="icon">💼</span> Invest Now
+            </a>
+            <a href="deposit.php">
+                <span class="icon">💰</span> Deposit
+            </a>
+            <a href="withdraw.php">
+                <span class="icon">🏦</span> Withdraw
+            </a>
+            <a href="history.php">
+                <span class="icon">📋</span> History
+            </a>
+            <a href="profile.php">
+                <span class="icon">👤</span> Profile
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar"><?= strtoupper(substr($user['full_name'], 0, 1)) ?></div>
+                <div>
+                    <div class="user-name"><?= htmlspecialchars($user['full_name']) ?></div>
+                    <div class="user-email"><?= htmlspecialchars($user['email']) ?></div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <button class="mobile-toggle">☰</button>
+        
+        <div class="page-header">
+            <div>
+                <h1>Welcome back, <?= htmlspecialchars($user['full_name']) ?> 👋</h1>
+                <p>Here's your investment overview</p>
+            </div>
+            <a href="invest.php" class="btn btn-primary">+ New Investment</a>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-label">Account Balance</span>
+                    <span class="stat-icon purple">💰</span>
+                </div>
+                <div class="stat-value"><?= formatMoney($user['account_balance']) ?></div>
+                <div class="stat-change">Available for investment & withdrawal</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-label">Active Investments</span>
+                    <span class="stat-icon blue">📈</span>
+                </div>
+                <div class="stat-value"><?= $activeInvestments['count'] ?></div>
+                <div class="stat-change">₦<?= number_format($activeInvestments['total'], 2) ?> currently invested</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-label">Total Earned</span>
+                    <span class="stat-icon green">🏆</span>
+                </div>
+                <div class="stat-value"><?= formatMoney($user['total_earned']) ?></div>
+                <div class="stat-change">Lifetime earnings</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-header">
+                    <span class="stat-label">Total Withdrawn</span>
+                    <span class="stat-icon orange">💵</span>
+                </div>
+                <div class="stat-value"><?= formatMoney($user['total_withdrawn']) ?></div>
+                <div class="stat-change">Successfully withdrawn</div>
+            </div>
+        </div>
+
+        <!-- Active Investments -->
+        <div class="table-container" style="margin-bottom: 30px;">
+            <div class="table-header">
+                <h3>Active Investments</h3>
+                <a href="invest.php" class="btn btn-sm btn-primary">+ New</a>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Plan</th>
+                        <th>Amount</th>
+                        <th>Expected Return</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $stmt = $pdo->prepare("
+                        SELECT i.*, ip.plan_name 
+                        FROM investments i 
+                        JOIN investment_plans ip ON ip.id = i.plan_id 
+                        WHERE i.user_id = ? AND i.status = 'active' 
+                        ORDER BY i.created_at DESC 
+                        LIMIT 5
+                    ");
+                    $stmt->execute([$user_id]);
+                    $activeList = $stmt->fetchAll();
+                    
+                    if (count($activeList) > 0):
+                        foreach ($activeList as $inv):
+                    ?>
+                    <tr>
+                        <td><?= htmlspecialchars($inv['plan_name']) ?></td>
+                        <td><?= formatMoney($inv['amount']) ?></td>
+                        <td style="color: var(--success); font-weight: 600;"><?= formatMoney($inv['expected_return']) ?></td>
+                        <td><?= date('M j, Y', strtotime($inv['start_date'])) ?></td>
+                        <td><?= date('M j, Y', strtotime($inv['end_date'])) ?></td>
+                        <td><span class="badge badge-success">Active</span></td>
+                    </tr>
+                    <?php 
+                        endforeach;
+                    else:
+                    ?>
+                    <tr>
+                        <td colspan="6" style="text-align: center; padding: 40px; color: var(--text-muted);">
+                            No active investments. <a href="invest.php" style="color: var(--primary-light);">Start investing now!</a>
+                        </td>
+                    </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Recent Transactions -->
+        <div class="table-container">
+            <div class="table-header">
+                <h3>Recent Transactions</h3>
+                <a href="history.php" class="btn btn-sm btn-secondary">View All</a>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Amount</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (count($recentTransactions) > 0): ?>
+                        <?php foreach ($recentTransactions as $txn): ?>
+                        <tr>
+                            <td style="text-transform: capitalize;">
+                                <?php 
+                                    $icons = ['deposit' => '💰', 'investment' => '📥', 'return' => '📈', 'withdrawal' => '💳'];
+                                    echo ($icons[$txn['type']] ?? '📋') . ' ' . $txn['type']; 
+                                ?>
+                            </td>
+                            <td style="font-weight: 600;"><?= formatMoney($txn['amount']) ?></td>
+                            <td><?= htmlspecialchars($txn['description']) ?></td>
+                            <td><?= date('M j, Y g:i A', strtotime($txn['created_at'])) ?></td>
+                            <td>
+                                <span class="badge badge-<?= $txn['status'] === 'completed' ? 'success' : ($txn['status'] === 'pending' ? 'warning' : 'danger') ?>">
+                                    <?= $txn['status'] ?>
+                                </span>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="5" style="text-align: center; padding: 40px; color: var(--text-muted);">
+                                No transactions yet.
+                            </td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
+<?php
+require_once 'config/database.php';
+
+if (!isLoggedIn()) {
+    redirect('login.php');
+}
+
+$user_id = $_SESSION['user_id'];
+
+// Get user
+$stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
+$stmt->execute([$user_id]);
+$user = $stmt->fetch();
+
+// Get available plans
+$stmt = $pdo->query("SELECT * FROM investment_plans WHERE is_active = 1 ORDER BY min_amount ASC");
+$plans = $stmt->fetchAll();
+
+$error = '';
+$success = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $plan_id = (int)($_POST['plan_id'] ?? 0);
+    $amount = (float)($_POST['amount'] ?? 0);
+    
+    // Validate plan
+    $stmt = $pdo->prepare("SELECT * FROM investment_plans WHERE id = ? AND is_active = 1");
+    $stmt->execute([$plan_id]);
+    $plan = $stmt->fetch();
+    
+    if (!$plan) {
+        $error = 'Invalid investment plan selected.';
+    } elseif ($amount < $plan['min_amount'] || $amount > $plan['max_amount']) {
+        $error = "Amount must be between " . formatMoney($plan['min_amount']) . " and " . formatMoney($plan['max_amount']) . ".";
+    } elseif ($amount > $user['account_balance']) {
+        $error = 'Insufficient balance. Please deposit funds first.';
+    } else {
+        $expected_return = $amount * $plan['roi_multiplier'];
+        $end_date = date('Y-m-d H:i:s', strtotime('+' . $plan['duration_days'] . ' days'));
+        
+        $pdo->beginTransaction();
+        try {
+            // Deduct from balance
+            $stmt = $pdo->prepare("UPDATE users SET account_balance = account_balance - ?, total_invested = total_invested + ? WHERE id = ?");
+            $stmt->execute([$amount, $amount, $user_id]);
+            
+            // Create investment
+            $stmt = $pdo->prepare("
+                INSERT INTO investments (user_id, plan_id, amount, expected_return, status, end_date) 
+                VALUES (?, ?, ?, ?, 'active', ?)
+            ");
+            $stmt->execute([$user_id, $plan_id, $amount, $expected_return, $end_date]);
+            $investment_id = $pdo->lastInsertId();
+            
+            // Log transaction
+            $stmt = $pdo->prepare("INSERT INTO transactions (user_id, type, amount, description, status) VALUES (?, 'investment', ?, ?, 'completed')");
+            $stmt->execute([$user_id, $amount, "Invested in {$plan['plan_name']} - {$plan['roi_multiplier']}x for {$plan['duration_days']} days"]);
+            
+            $pdo->commit();
+            $success = "Investment successful! You invested " . formatMoney($amount) . " and will receive " . formatMoney($expected_return) . " in {$plan['duration_days']} days.";
+            
+            // Refresh user balance
+            $stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
+            $stmt->execute([$user_id]);
+            $user = $stmt->fetch();
+            
+        } catch (Exception $e) {
+            $pdo->rollBack();
+            $error = 'Investment failed. Please try again.';
+        }
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invest - <?= SITE_NAME ?></title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="dashboard-wrapper">
+    <div class="sidebar-overlay"></div>
+    <aside class="sidebar">
+        <a href="index.php" class="sidebar-logo">WealthBoost</a>
+        <nav class="sidebar-nav">
+            <a href="dashboard.php"><span class="icon">📊</span> Dashboard</a>
+            <a href="invest.php" class="active"><span class="icon">💼</span> Invest Now</a>
+            <a href="deposit.php"><span class="icon">💰</span> Deposit</a>
+            <a href="withdraw.php"><span class="icon">🏦</span> Withdraw</a>
+            <a href="history.php"><span class="icon">📋</span> History</a>
+            <a href="profile.php"><span class="icon">👤</span> Profile</a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar"><?= strtoupper(substr($user['full_name'], 0, 1)) ?></div>
+                <div>
+                    <div class="user-name"><?= htmlspecialchars($user['full_name']) ?></div>
+                    <div class="user-email">Available: <?= formatMoney($user['account_balance']) ?></div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <button class="mobile-toggle">☰</button>
+        
+        <div class="page-header">
+            <div>
+                <h1>Investment Plans</h1>
+                <p>Your Balance: <strong style="color: var(--success);"><?= formatMoney($user['account_balance']) ?></strong></p>
+            </div>
+        </div>
+
+        <?php if ($error): ?>
+            <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
+        <?php elseif ($success): ?>
+            <div class="alert alert-success"><?= htmlspecialchars($success) ?></div>
+        <?php endif; ?>
+
+        <div class="invest-plans">
+            <?php foreach ($plans as $plan): ?>
+            <div class="invest-card <?= ($plan === $plans[1] ?? null) ? 'popular' : '' ?>">
+                <h3 style="font-size: 1.5rem; margin-bottom: 8px;"><?= htmlspecialchars($plan['plan_name']) ?></h3>
+                <p style="color: var(--text-muted); margin-bottom: 16px;">
+                    <?= formatMoney($plan['min_amount']) ?> – <?= formatMoney($plan['max_amount']) ?>
+                </p>
+                <div style="font-size: 3rem; font-weight: 800; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 4px;">
+                    <?= $plan['roi_multiplier'] ?>x
+                </div>
+                <p style="color: var(--text-secondary); margin-bottom: 20px;">Return in <?= $plan['duration_days'] ?> days</p>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px;"><?= htmlspecialchars($plan['description']) ?></p>
+                
+                <form method="POST" action="" style="display: flex; flex-direction: column; gap: 12px;">
+                    <input type="hidden" name="plan_id" value="<?= $plan['id'] ?>">
+                    <div class="form-group" style="margin-bottom: 0;">
+                        <input 
+                            type="number" 
+                            name="amount" 
+                            placeholder="Enter amount (₦<?= number_format($plan['min_amount']) ?>+)" 
+                            min="<?= $plan['min_amount'] ?>" 
+                            max="<?= $plan['max_amount'] ?>" 
+                            step="100"
+                            required
+                        >
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;" <?= $user['account_balance'] < $plan['min_amount'] ? 'disabled' : '' ?>>
+                        Invest Now
+                    </button>
+                </form>
+                
+                <?php if ($user['account_balance'] < $plan['min_amount']): ?>
+                    <p style="color: var(--danger); font-size: 0.8rem; margin-top: 8px;">
+                        Insufficient balance. <a href="deposit.php" style="color: var(--primary-light);">Deposit funds</a>
+                    </p>
+                <?php endif; ?>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </main>
+</div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
+<?php
+require_once 'config/database.php';
+
+if (!isLoggedIn()) {
+    redirect('login.php');
+}
+
+$user_id = $_SESSION['user_id'];
+
+$stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
+$stmt->execute([$user_id]);
+$user = $stmt->fetch();
+
+$error = '';
+$success = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $amount = (float)($_POST['amount'] ?? 0);
+    
+    if ($amount < MIN_DEPOSIT) {
+        $error = 'Minimum deposit is ' . formatMoney(MIN_DEPOSIT) . '.';
+    } else {
+        // Create deposit request
+        $stmt = $pdo->prepare("INSERT INTO deposits (user_id, amount, payment_method, status) VALUES (?, ?, 'bank_transfer', 'pending')");
+        $stmt->execute([$user_id, $amount]);
+        $deposit_id = $pdo->lastInsertId();
+        
+        // Log pending transaction
+        $stmt = $pdo->prepare("INSERT INTO transactions (user_id, type, amount, description, status) VALUES (?, 'deposit', ?, ?, 'pending')");
+        $stmt->execute([$user_id, $amount, "Deposit request #{$deposit_id}"]);
+        
+        $success = 'Deposit request submitted! Please transfer to the account details below and your balance will be credited upon confirmation.';
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit - <?= SITE_NAME ?></title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="dashboard-wrapper">
+    <div class="sidebar-overlay"></div>
+    <aside class="sidebar">
+        <a href="index.php" class="sidebar-logo">WealthBoost</a>
+        <nav class="sidebar-nav">
+            <a href="dashboard.php"><span class="icon">📊</span> Dashboard</a>
+            <a href="invest.php"><span class="icon">💼</span> Invest Now</a>
+            <a href="deposit.php" class="active"><span class="icon">💰</span> Deposit</a>
+            <a href="withdraw.php"><span class="icon">🏦</span> Withdraw</a>
+            <a href="history.php"><span class="icon">📋</span> History</a>
+            <a href="profile.php"><span class="icon">👤</span> Profile</a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar"><?= strtoupper(substr($user['full_name'], 0, 1)) ?></div>
+                <div>
+                    <div class="user-name"><?= htmlspecialchars($user['full_name']) ?></div>
+                    <div class="user-email">Balance: <?= formatMoney($user['account_balance']) ?></div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <button class="mobile-toggle">☰</button>
+        
+        <div class="page-header">
+            <div>
+                <h1>Deposit Funds</h1>
+                <p>Add funds to your investment wallet</p>
+            </div>
+        </div>
+
+        <?php if ($error): ?>
+            <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
+        <?php elseif ($success): ?>
+            <div class="alert alert-success">
+                <?= htmlspecialchars($success) ?>
+                <div style="margin-top: 16px; padding: 16px; background: var(--dark); border-radius: var(--radius-sm);">
+                    <p><strong>Bank:</strong> GTBank Plc</p>
+                    <p><strong>Account Name:</strong> WealthBoost Invest Limited</p>
+                    <p><strong>Account Number:</strong> 0123456789</p>
+                    <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 8px;">Send exact amount and contact support with your deposit reference.</p>
+                </div>
+            </div>
+        <?php endif; ?>
+
+        <div class="withdraw-card">
+            <h3 style="margin-bottom: 24px; text-align: center;">Make a Deposit</h3>
+            
+            <form method="POST" action="">
+                <div class="form-group">
+                    <label for="amount">Deposit Amount (₦)</label>
+                    <input 
+                        type="number" 
+                        id="amount" 
+                        name="amount" 
+                        placeholder="Minimum <?= formatMoney(MIN_DEPOSIT) ?>" 
+                        min="<?= MIN_DEPOSIT ?>" 
+                        step="100"
+                        required
+                    >
+                </div>
+                <button type="submit" class="btn btn-success" style="width: 100%;">Submit Deposit Request</button>
+            </form>
+
+            <div style="margin-top: 30px;">
+                <h4 style="margin-bottom: 12px; font-size: 0.95rem;">💡 Deposit Instructions</h4>
+                <ol style="color: var(--text-secondary); font-size: 0.9rem; display: flex; flex-direction: column; gap: 8px; padding-left: 20px;">
+                    <li>Enter the amount you wish to deposit</li>
+                    <li>Submit the request to receive bank details</li>
+                    <li>Transfer the exact amount to the provided account</li>
+                    <li>Contact support with your payment reference</li>
+                    <li>Your wallet will be credited within 30 minutes</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Pending Deposits -->
+        <div class="table-container" style="margin-top: 30px;">
+            <div class="table-header">
+                <h3>Pending Deposits</h3>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Amount</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $stmt = $pdo->prepare("SELECT * FROM deposits WHERE user_id = ? ORDER BY created_at DESC LIMIT 5");
+                    $stmt->execute([$user_id]);
+                    $deposits = $stmt->fetchAll();
+                    
+                    if (count($deposits) > 0):
+                        foreach ($deposits as $dep):
+                    ?>
+                    <tr>
+                        <td><?= formatMoney($dep['amount']) ?></td>
+                        <td><?= date('M j, Y g:i A', strtotime($dep['created_at'])) ?></td>
+                        <td>
+                            <span class="badge badge-<?= $dep['status'] === 'approved' ? 'success' : ($dep['status'] === 'rejected' ? 'danger' : 'warning') ?>">
+                                <?= $dep['status'] ?>
+                            </span>
+                        </td>
+                    </tr>
+                    <?php 
+                        endforeach;
+                    else:
+                    ?>
+                    <tr>
+                        <td colspan="3" style="text-align: center; padding: 30px; color: var(--text-muted);">No deposit requests yet.</td>
+                    </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
+<?php
+require_once 'config/database.php';
+
+if (!isLoggedIn()) {
+    redirect('login.php');
+}
+
+$user_id = $_SESSION['user_id'];
+
+$stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
+$stmt->execute([$user_id]);
+$user = $stmt->fetch();
+
+// Pagination
+$page = max(1, (int)($_GET['page'] ?? 1));
+$limit = 20;
+$offset = ($page - 1) * $limit;
+
+$stmt = $pdo->prepare("SELECT COUNT(*) FROM transactions WHERE user_id = ?");
+$stmt->execute([$user_id]);
+$totalTransactions = $stmt->fetchColumn();
+$totalPages = ceil($totalTransactions / $limit);
+
+$stmt = $pdo->prepare("SELECT * FROM transactions WHERE user_id = ? ORDER BY created_at DESC LIMIT $limit OFFSET $offset");
+$stmt->execute([$user_id]);
+$transactions = $stmt->fetchAll();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction History - <?= SITE_NAME ?></title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="dashboard-wrapper">
+    <div class="sidebar-overlay"></div>
+    <aside class="sidebar">
+        <a href="index.php" class="sidebar-logo">WealthBoost</a>
+        <nav class="sidebar-nav">
+            <a href="dashboard.php"><span class="icon">📊</span> Dashboard</a>
+            <a href="invest.php"><span class="icon">💼</span> Invest Now</a>
+            <a href="deposit.php"><span class="icon">💰</span> Deposit</a>
+            <a href="withdraw.php"><span class="icon">🏦</span> Withdraw</a>
+            <a href="history.php" class="active"><span class="icon">📋</span> History</a>
+            <a href="profile.php"><span class="icon">👤</span> Profile</a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar"><?= strtoupper(substr($user['full_name'], 0, 1)) ?></div>
+                <div>
+                    <div class="user-name"><?= htmlspecialchars($user['full_name']) ?></div>
+                    <div class="user-email"><?= htmlspecialchars($user['email']) ?></div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <button class="mobile-toggle">☰</button>
+        
+        <div class="page-header">
+            <div>
+                <h1>Transaction History</h1>
+                <p>Complete record of all your transactions</p>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <div class="table-header">
+                <h3>All Transactions (<?= $totalTransactions ?>)</h3>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Amount</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Reference</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (count($transactions) > 0): ?>
+                        <?php foreach ($transactions as $txn): ?>
+                        <tr>
+                            <td style="text-transform: capitalize; font-weight: 600;">
+                                <?php 
+                                    $icons = ['deposit' => '💰', 'investment' => '📥', 'return' => '📈', 'withdrawal' => '💳', 'bonus' => '🎁', 'referral' => '👥'];
+                                    echo ($icons[$txn['type']] ?? '📋') . ' ' . $txn['type']; 
+                                ?>
+                            </td>
+                            <td style="font-weight: 600; color: <?= in_array($txn['type'], ['return', 'bonus', 'referral']) ? 'var(--success)' : (in_array($txn['type'], ['investment', 'withdrawal']) ? 'var(--danger)' : 'inherit') ?>">
+                                <?= ($txn['amount'] >= 0 && in_array($txn['type'], ['deposit', 'return', 'bonus', 'referral']) ? '+' : '') . formatMoney($txn['amount']) ?>
+                            </td>
+                            <td><?= htmlspecialchars($txn['description']) ?></td>
+                            <td><?= date('M j, Y g:i A', strtotime($txn['created_at'])) ?></td>
+                            <td><?= $txn['reference'] ?? '—' ?></td>
+                            <td>
+                                <span class="badge badge-<?= $txn['status'] === 'completed' ? 'success' : ($txn['status'] === 'pending' ? 'warning' : 'danger') ?>">
+                                    <?= $txn['status'] ?>
+                                </span>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="6" style="text-align: center; padding: 50px; color: var(--text-muted);">
+                                No transactions found. <a href="invest.php" style="color: var(--primary-light);">Start investing!</a>
+                            </td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        <?php if ($totalPages > 1): ?>
+        <div style="display: flex; justify-content: center; gap: 8px; margin-top: 30px;">
+            <?php if ($page > 1): ?>
+                <a href="?page=<?= $page - 1 ?>" class="btn btn-sm btn-secondary">← Previous</a>
+            <?php endif; ?>
+            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                <a href="?page=<?= $i ?>" class="btn btn-sm <?= $i === $page ? 'btn-primary' : 'btn-secondary' ?>"><?= $i ?></a>
+            <?php endfor; ?>
+            <?php if ($page < $totalPages): ?>
+                <a href="?page=<?= $page + 1 ?>" class="btn btn-sm btn-secondary">Next →</a>
+            <?php endif; ?>
+        </div>
+        <?php endif; ?>
+    </main>
+</div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
+<?php
+require_once 'config/database.php';
+
+if (!isLoggedIn()) {
+    redirect('login.php');
+}
+
+$user_id = $_SESSION['user_id'];
+
+$stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
+$stmt->execute([$user_id]);
+$user = $stmt->fetch();
+
+$error = '';
+$success = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $action = $_POST['action'] ?? '';
+    
+    if ($action === 'update_profile') {
+        $full_name = sanitize($_POST['full_name'] ?? '');
+        $phone = sanitize($_POST['phone'] ?? '');
+        
+        if (empty($full_name)) {
+            $error = 'Full name is required.';
+        } else {
+            $stmt = $pdo->prepare("UPDATE users SET full_name = ?, phone = ? WHERE id = ?");
+            $stmt->execute([$full_name, $phone, $user_id]);
+            $success = 'Profile updated successfully.';
+            
+            // Refresh
+            $stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
+            $stmt->execute([$user_id]);
+            $user = $stmt->fetch();
+        }
+    } elseif ($action === 'change_password') {
+        $current = $_POST['current_password'] ?? '';
+        $new = $_POST['new_password'] ?? '';
+        $confirm = $_POST['confirm_password'] ?? '';
+        
+        if (!password_verify($current, $user['password'])) {
+            $error = 'Current password is incorrect.';
+        } elseif (strlen($new) < 6) {
+            $error = 'New password must be at least 6 characters.';
+        } elseif ($new !== $confirm) {
+            $error = 'New passwords do not match.';
+        } else {
+            $hashed = password_hash($new, PASSWORD_DEFAULT);
+            $stmt = $pdo->prepare("UPDATE users SET password = ? WHERE id = ?");
+            $stmt->execute([$hashed, $user_id]);
+            $success = 'Password changed successfully.';
+        }
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - <?= SITE_NAME ?></title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="dashboard-wrapper">
+    <div class="sidebar-overlay"></div>
+    <aside class="sidebar">
+        <a href="index.php" class="sidebar-logo">WealthBoost</a>
+        <nav class="sidebar-nav">
+            <a href="dashboard.php"><span class="icon">📊</span> Dashboard</a>
+            <a href="invest.php"><span class="icon">💼</span> Invest Now</a>
+            <a href="deposit.php"><span class="icon">💰</span> Deposit</a>
+            <a href="withdraw.php"><span class="icon">🏦</span> Withdraw</a>
+            <a href="history.php"><span class="icon">📋</span> History</a>
+            <a href="profile.php" class="active"><span class="icon">👤</span> Profile</a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar"><?= strtoupper(substr($user['full_name'], 0, 1)) ?></div>
+                <div>
+                    <div class="user-name"><?= htmlspecialchars($user['full_name']) ?></div>
+                    <div class="user-email"><?= htmlspecialchars($user['email']) ?></div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <button class="mobile-toggle">☰</button>
+        
+        <div class="page-header">
+            <div>
+                <h1>My Profile</h1>
+                <p>Manage your account information</p>
+            </div>
+        </div>
+
+        <?php if ($error): ?>
+            <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
+        <?php elseif ($success): ?>
+            <div class="alert alert-success"><?= htmlspecialchars($success) ?></div>
+        <?php endif; ?>
+
+        <div class="profile-card">
+            <div class="profile-header">
+                <div class="profile-avatar"><?= strtoupper(substr($user['full_name'], 0, 1)) ?></div>
+                <div class="profile-details">
+                    <h3><?= htmlspecialchars($user['full_name']) ?></h3>
+                    <p>Member since <?= date('F j, Y', strtotime($user['created_at'])) ?></p>
+                    <p style="margin-top: 4px;">
+                        <span class="badge badge-<?= $user['status'] === 'active' ? 'success' : 'danger' ?>">
+                            <?= $user['status'] ?>
+                        </span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Update Profile -->
+            <form method="POST" action="">
+                <input type="hidden" name="action" value="update_profile">
+                <h4 style="margin-bottom: 20px;">Personal Information</h4>
+                <div class="form-group">
+                  
+<?php
+require_once 'config/database.php';
+
+if (!isLoggedIn()) {
+    redirect('login.php');
+}
+
+$user_id = $_SESSION['user_id'];
+
+$stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
+$stmt->execute([$user_id]);
+$user = $stmt->fetch();
+
+$error = '';
+$success = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $action = $_POST['action'] ?? '';
+    
+    if ($action === 'update_profile') {
+        $full_name = sanitize($_POST['full_name'] ?? '');
+        $phone = sanitize($_POST['phone'] ?? '');
+        
+        if (empty($full_name)) {
+            $error = 'Full name is required.';
+        } else {
+            $stmt = $pdo->prepare("UPDATE users SET full_name = ?, phone = ? WHERE id = ?");
+            $stmt->execute([$full_name, $phone, $user_id]);
+            $success = 'Profile updated successfully.';
+            
+            // Refresh user data
+            $stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
+            $stmt->execute([$user_id]);
+            $user = $stmt->fetch();
+        }
+    } elseif ($action === 'change_password') {
+        $current = $_POST['current_password'] ?? '';
+        $new = $_POST['new_password'] ?? '';
+        $confirm = $_POST['confirm_password'] ?? '';
+        
+        if (!password_verify($current, $user['password'])) {
+            $error = 'Current password is incorrect.';
+        } elseif (strlen($new) < 6) {
+            $error = 'New password must be at least 6 characters.';
+        } elseif ($new !== $confirm) {
+            $error = 'New passwords do not match.';
+        } else {
+            $hashed = password_hash($new, PASSWORD_DEFAULT);
+            $stmt = $pdo->prepare("UPDATE users SET password = ? WHERE id = ?");
+            $stmt->execute([$hashed, $user_id]);
+            $success = 'Password changed successfully.';
+        }
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - <?= SITE_NAME ?></title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="dashboard-wrapper">
+    <div class="sidebar-overlay"></div>
+    <aside class="sidebar">
+        <a href="index.php" class="sidebar-logo">WealthBoost</a>
+        <nav class="sidebar-nav">
+            <a href="dashboard.php"><span class="icon">📊</span> Dashboard</a>
+            <a href="invest.php"><span class="icon">💼</span> Invest Now</a>
+            <a href="deposit.php"><span class="icon">💰</span> Deposit</a>
+            <a href="withdraw.php"><span class="icon">🏦</span> Withdraw</a>
+            <a href="history.php"><span class="icon">📋</span> History</a>
+            <a href="profile.php" class="active"><span class="icon">👤</span> Profile</a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="user-avatar"><?= strtoupper(substr($user['full_name'], 0, 1)) ?></div>
+                <div>
+                    <div class="user-name"><?= htmlspecialchars($user['full_name']) ?></div>
+                    <div class="user-email"><?= htmlspecialchars($user['email']) ?></div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <button class="mobile-toggle">☰</button>
+        
+        <div class="page-header">
+            <div>
+                <h1>My Profile</h1>
+                <p>Manage your account information</p>
+            </div>
+        </div>
+
+        <?php if ($error): ?>
+            <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
+        <?php elseif ($success): ?>
+            <div class="alert alert-success"><?= htmlspecialchars($success) ?></div>
+        <?php endif; ?>
+
+        <div class="profile-card">
+            <div class="profile-header">
+                <div class="profile-avatar"><?= strtoupper(substr($user['full_name'], 0, 1)) ?></div>
+                <div class="profile-details">
+                    <h3><?= htmlspecialchars($user['full_name']) ?></h3>
+                    <p>Member since <?= date('F j, Y', strtotime($user['created_at'])) ?></p>
+                    <p style="margin-top: 4px;">
+                        <span class="badge badge-<?= $user['status'] === 'active' ? 'success' : 'danger' ?>">
+                            <?= $user['status'] ?>
+                        </span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Update Profile Form -->
+            <form method="POST" action="">
+                <input type="hidden" name="action" value="update_profile">
+                <h4 style="margin-bottom: 20px;">Personal Information</h4>
+                <div class="form-group">
+                    <label for="full_name">Full Name</label>
+                    <input type="text" id="full_name" name="full_name" value="<?= htmlspecialchars($user['full_name']) ?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" value="<?= htmlspecialchars($user['phone'] ?? '') ?>" placeholder="+234 XXX XXX XXXX">
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" value="<?= htmlspecialchars($user['email']) ?>" disabled style="opacity: 0.6;">
+                </div>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" value="<?= htmlspecialchars($user['username']) ?>" disabled style="opacity: 0.6;">
+                </div>
+                <button type="submit" class="btn btn-primary">Update Profile</button>
+            </form>
+
+            <hr style="border: none; border-top: 1px solid var(--dark-border); margin: 40px 0;">
+
+            <!-- Change Password Form -->
+            <form method="POST" action="">
+                <input type="hidden" name="action" value="change_password">
+                <h4 style="margin-bottom: 20px;">Change Password</h4>
+                <div class="form-group">
+                    <label for="current_password">Current Password</label>
+                    <input type="password" id="current_password" name="current_password" placeholder="Enter current password" required>
+                </div>
+                <div class="form-group">
+                    <label for="new_password">New Password</label>
+                    <input type="password" id="new_password" name="new_password" placeholder="At least 6 characters" minlength="6" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm_password">Confirm New Password</label>
+                    <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm new password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Change Password</button>
+            </form>
+
+            <hr style="border: none; border-top: 1px solid var(--dark-border); margin: 40px 0;">
+
+            <!-- Account Summary -->
+            <h4 style="margin-bottom: 20px;">Account Summary</h4>
+            <div class="withdraw-info">
+                <span>Account Balance</span>
+                <span class="value" style="color: var(--success);"><?= formatMoney($user['account_balance']) ?></span>
+            </div>
+            <div class="withdraw-info">
+                <span>Total Invested</span>
+                <span class="value"><?= formatMoney($user['total_invested']) ?></span>
+            </div>
+            <div class="withdraw-info">
+                <span>Total Earned</span>
+                <span class="value" style="color: var(--success);"><?= formatMoney($user['total_earned']) ?></span>
+            </div>
+            <div class="withdraw-info" style="border-bottom: none;">
+                <span>Total Withdrawn</span>
+                <span class="value"><?= formatMoney($user['total_withdrawn']) ?></span>
+            </div>
+        </div>
+    </main>
+</div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
+<?php
+session_start();
+session_destroy();
+header("Location: login.php");
+exit();
+?>
+<?php
+/**
+ * Database Setup Script
+ * Run this ONCE, then DELETE it for security.
+ */
+
+$host = 'localhost';
+$user = 'root';
+$pass = '';
+
+try {
+    $pdo = new PDO("mysql:host=$host", $user, $pass, [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+    ]);
+    
+    // Create database
+    $pdo->exec("CREATE DATABASE IF NOT EXISTS investment_platform DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
+    $pdo->exec("USE investment_platform");
+    
+    // Create users table
+    $pdo->exec("
+        CREATE TABLE IF NOT EXISTS users (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(50) NOT NULL UNIQUE,
+            email VARCHAR(100) NOT NULL UNIQUE,
+            password VARCHAR(255) NOT NULL,
+            full_name VARCHAR(100) NOT NULL,
+            phone VARCHAR(20),
+            account_balance DECIMAL(15,2) DEFAULT 0.00,
+            total_invested DECIMAL(15,2) DEFAULT 0.00,
+            total_earned DECIMAL(15,2) DEFAULT 0.00,
+            total_withdrawn DECIMAL(15,2) DEFAULT 0.00,
+            status ENUM('active','suspended','pending') DEFAULT 'active',
+            email_verified TINYINT(1) DEFAULT 0,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+    ");
+    
+    // Create investment plans table
+    $pdo->exec("
+        CREATE TABLE IF NOT EXISTS investment_plans (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            plan_name VARCHAR(100) NOT NULL,
+            min_amount DECIMAL(15,2) NOT NULL,
+            max_amount DECIMAL(15,2) NOT NULL DEFAULT 999999.99,
+            roi_multiplier DECIMAL(5,2) NOT NULL,
+            duration_days INT NOT NULL,
+            description TEXT,
+            is_active TINYINT(1) DEFAULT 1,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+    ");
+    
+    // Create investments table
+    $pdo->exec("
+        CREATE TABLE IF NOT EXISTS investments (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            user_id INT NOT NULL,
+            plan_id INT NOT NULL,
+            amount DECIMAL(15,2) NOT NULL,
+            expected_return DECIMAL(15,2) NOT NULL,
+            status ENUM('active','completed','cancelled') DEFAULT 'active',
+            start_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            end_date DATETIME NOT NULL,
+            completion_date DATETIME NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+            FOREIGN KEY (plan_id) REFERENCES investment_plans(id)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+    ");
+    
+    // Create transactions table
+    $pdo->exec("
+        CREATE TABLE IF NOT EXISTS transactions (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            user_id INT NOT NULL,
+            type ENUM('deposit','investment','return','withdrawal','bonus','referral') NOT NULL,
+            amount DECIMAL(15,2) NOT NULL,
+            description VARCHAR(255),
+            status ENUM('pending','completed','failed','cancelled') DEFAULT 'completed',
+            reference VARCHAR(100),
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+    ");
+    
+    // Create withdrawals table
+    $pdo->exec("
+        CREATE TABLE IF NOT EXISTS withdrawals (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            user_id INT NOT NULL,
+            amount DECIMAL(15,2) NOT NULL,
+            bank_name VARCHAR(100),
+            account_number VARCHAR(20),
+            account_name VARCHAR(100),
+            status ENUM('pending','approved','rejected','completed') DEFAULT 'pending',
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            processed_at DATETIME NULL,
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+    ");
+    
+    // Create deposits table
+    $pdo->exec("
+        CREATE TABLE IF NOT EXISTS deposits (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            user_id INT NOT NULL,
+            amount DECIMAL(15,2) NOT NULL,
+            payment_method VARCHAR(50) DEFAULT 'bank_transfer',
+            proof_image VARCHAR(255),
+            status ENUM('pending','approved','rejected') DEFAULT 'pending',
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            processed_at DATETIME NULL,
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
+    ");
+    
+    // Seed plans
+    $check = $pdo->query("SELECT COUNT(*) FROM investment_plans")->fetchColumn();
+    if ($check == 0) {
+        $pdo->exec("
+            INSERT INTO investment_plans (plan_name, min_amount, max_amount, roi_multiplier, duration_days, description) VALUES
+            ('Starter Plan', 3000.00, 50000.00, 5.00, 5, 'Invest ₦3,000 – ₦50,000 and get 5x returns in 5 days.'),
+            ('Growth Plan', 50001.00, 200000.00, 5.00, 5, 'Invest ₦50,001 – ₦200,000 and get 5x returns in 5 days.'),
+            ('Premium Plan', 200001.00, 999999.99, 5.00, 5, 'Invest ₦200,001+ and get 5x returns in 5 days.')
+        ");
+    }
+    
+    echo "<div style='max-width:600px;margin:50px auto;font-family:sans-serif;padding:40px;background:#0F0B1E;color:#fff;border-radius:20px;border:1px solid #2D2850;text-align:center;'>";
+    echo "<h1 style='color:#6C3DFF;margin-bottom:16px;'>✅ Setup Complete!</h1>";
+    echo "<p style='color:#B8B0D4;font-size:1.1rem;'>All database tables created and investment plans seeded.</p>";
+    echo "<div style='margin:24px 0;padding:16px;background:#1A1530;border-radius:8px;'>";
+    echo "<p><strong style='color:#00C9A7;'>✓</strong> Users table</p>";
+    echo "<p><strong style='color:#00C9A7;'>✓</strong> Investment Plans table (3 plans seeded)</p>";
+    echo "<p><strong style='color:#00C9A7;'>✓</strong> Investments table</p>";
+    echo "<p><strong style='color:#00C9A7;'>✓</strong> Transactions table</p>";
+    echo "<p><strong style='color:#00C9A7;'>✓</strong> Withdrawals table</p>";
+    echo "<p><strong style='color:#00C9A7;'>✓</strong> Deposits table</p>";
+    echo "</div>";
+    echo "<p style='color:#FF6B35;font-weight:600;'>⚠️ DELETE setup.php NOW for security!</p>";
+    echo "<a href='index.php' style='display:inline-block;padding:12px 32px;background:linear-gradient(135deg,#6C3DFF,#00C9A7);color:white;text-decoration:none;border-radius:8px;font-weight:600;margin-top:16px;'>Go to Homepage</a>";
+    echo "</div>";
+    
+} catch (PDOException $e) {
+    echo "<div style='max-width:600px;margin:50px auto;font-family:sans-serif;padding:40px;background:#1A1530;color:#FF4757;border-radius:20px;border:1px solid #FF4757;'>";
+    echo "<h1>❌ Setup Failed</h1>";
+    echo "<p>" . htmlspecialchars($e->getMessage()) . "</p>";
+    echo "</div>";
+}
+?>
+
